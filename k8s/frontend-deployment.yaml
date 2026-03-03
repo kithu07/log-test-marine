@@ -23,7 +23,7 @@ spec:
         - name: acr-pull-secret
       containers:
         - name: frontend
-          image: ACR_REGISTRY/workflow-frontend:latest
+          image: ACR_REGISTRY/workflow-frontend2:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
