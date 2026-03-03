@@ -1,7 +1,11 @@
+import { NextResponse } from 'next/server';
 import { logError } from '@/lib/logger';
 
-/** Trigger an unhandled runtime error (for testing). */
+/** Trigger a simulated runtime error (for testing). Logs as error and returns 500. */
 export async function GET() {
   logError('Intentional runtime error triggered', { endpoint: '/api/errors/throw' });
-  throw new Error('Intentional runtime error for testing');
+  return NextResponse.json(
+    { error: 'Runtime Error', message: 'Intentional runtime error for testing' },
+    { status: 500 }
+  );
 }
