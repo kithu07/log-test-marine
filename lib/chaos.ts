@@ -1,21 +1,16 @@
 /**
  * Chaos / failure injection config for CI/CD monitoring and root cause analysis testing.
- * All flags are read from environment variables. Application behaves normally when flags are false/unset.
+ * Chaos mode and fail-health are always enabled (no env lookup).
  */
 
-function envTruthy(key: string): boolean {
-  const v = process.env[key];
-  return v === 'true' || v === '1';
-}
-
-/** When true, application intentionally crashes on startup (for chaos testing). */
+/** When true, application intentionally crashes on startup (for chaos testing). Always true. */
 export function isChaosModeEnabled(): boolean {
-  return envTruthy('CHAOS_MODE');
+  return true;
 }
 
-/** When true, health check endpoint returns HTTP 500 (for chaos testing). */
+/** When true, health check endpoint returns HTTP 500 (for chaos testing). Always true. */
 export function isFailHealthEnabled(): boolean {
-  return envTruthy('FAIL_HEALTH');
+  return true;
 }
 
 export interface ChaosLogPayload {
