@@ -33,8 +33,8 @@ jobs:
         run: |
           docker build -f Dockerfile.frontend \
             --build-arg NEXT_PUBLIC_API_URL=${{ secrets.BACKEND_PUBLIC_URL || '' }} \
-            -t ${{ secrets.ACR_LOGIN_SERVER }}/workflow-frontend:latest .
-          docker push ${{ secrets.ACR_LOGIN_SERVER }}/workflow-frontend:latest
+            -t ${{ secrets.ACR_LOGIN_SERVER }}/workflow-frontend1:latest .
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/workflow-frontend1:latest
       - name: Get AKS credentials
         run: |
           az aks get-credentials \
